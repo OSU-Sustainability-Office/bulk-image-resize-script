@@ -9,12 +9,9 @@ if [ "$1" = "-create" ]; then
   exit 0
 fi
 
-# Remove the directories
+# Remove the output directories
 if [ "$1" = "-remove" ]; then
-  rm -rf ./input
   rm -rf ./output
-  rm -rf ./output/fullSize
-  rm -rf ./output/thumbnails
   exit 0
 fi
 
@@ -31,6 +28,9 @@ imgp -cmp ./input
 
 echo "Copying full size images to output..."
 mv ./input/*_IMGP.jpg ./output/fullSize
+for file in ./output/fullsize/*; do # Removes the _IMGP from the filenames that imgp adds
+    mv "$file" "${file/_IMGP/}"
+done
 
 # Next, create all of the thumbnails
 echo "Creating optimized thumbnails..."
@@ -38,3 +38,6 @@ imgp -cmpx 400x0 ./input
 
 echo "Copying thumbnails to output..."
 mv ./input/*_IMGP.jpg ./output/thumbnails
+for file in ./output/thumbnails/*; do # Removes the _IMGP from the filenames that imgp adds
+    mv "$file" "${file/_IMGP/}"
+done

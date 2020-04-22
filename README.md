@@ -16,4 +16,4 @@ This script was developed and tested on Mac OS X Catalina. It should be compatib
   2. Run the script - `./bulkImageResize -create` to create the input and output directories.
   3. Copy the images you wish to resize to the `input` directory.
   4. Run the script - `./bulkImageResize` to resize!
-  5. Optionally, you can delete the input and output directories recursively with `./bulkImageResize -remove`.
+  5. Optionally, you can delete the output directories recursively with `./bulkImageResize -remove`.
